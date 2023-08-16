@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indústria Copper</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <style>
+        /* Estilos gerais do corpo da página */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: linear-gradient(
+                135deg,
+                #f9f9f9,
+                #ffcb8b3c
+            );
+        }
+
+        /* Estilos para o cabeçalho */
+        header {
+            height: 75px;
+            transition: height 0.5s ease;
+            position: fixed;
+            background-color: rgba(0, 0, 0, 0.5); /* Background do header com opacidade 0.5 */
+            display: flex;
+            align-items: center;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1; /* Header sobreposto ao carrossel */
+        }
+      
+        .header-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 20%;
+            height: 100%; /* Ajuste o tamanho da imagem em relação à altura do header */
+        }
+
+        .header-logo img {
+            height: 75%; /* Altura da imagem em relação ao header */
+        }
+
+        .header-menu {
+            display: flex;
+            justify-content: flex-end;
+            width: 50%;
+        }
+
+        .header-menu li{
+            margin-left: 4em;
+            display: inline;
+        }
+
+        .header-menu a {
+            text-decoration: none;
+            color: #fff; /* Cor do texto do menu em branco */
+            font-size: 16px;
+        }
+
+        .header-menu ul {
+            margin-bottom: 0em;
+        }
+        /* Estilização dos links do menu quando passa o mouse por cima */
+        .header-menu a:hover {
+            color: #ffa216
+        }
+
+        /* Estilização dos links do menu ativos (página atual) */
+        .header-menu a.active {
+            font-weight: bold;
+        }
+
+        .header-search {
+            display: flex;
+            width: 30%;
+            justify-content: center;
+        }
+
+        header.header-scroll {
+            height: 55px;
+            background-color: black;
+            position: fixed;
+            top: 0;
+            width: 100%;
+
+        }
+
+    
+        header.header-scroll img {
+            transition: transform 0.5s ease;
+        }
+
+        .input-search {
+            display: flex;
+        }
+
+        .search-box {
+            position: relative;
+            width: 45%;
+        }
+
+        .search-box input[type="search"] {
+            width: 100%;
+            padding-right: 50px; /* Espaçamento para não sobrepor o ícone de lupa */
+            border-radius: 18px; /* Arredondar as bordas */
+        }
+
+        .search-box button {
+            position: absolute;
+            color: #343030c9;
+            top: 50%;
+            right: 5px;
+            transform: translateY(-50%); /* Centralizar verticalmente */
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Estilos para o contêiner do carrossel */
+        .carousel-container {
+            position: relative;
+            height: 670px; /* Altura do carrossel */
+            overflow: hidden; /* Esconde as partes do carrossel fora do container */
+            z-index: 0; /* Carrossel abaixo do menu */
+        }
+
+        /* Estilos para o carrossel */
+        #carouselExampleIndicators {
+            position: absolute;
+            top: 0;
+            width: 100%; /* Largura total do carrossel */
+            height: 100%; /* Altura total do carrossel */
+        }
+
+        /* Estilos para as imagens do carrossel */
+        .carousel-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Redimensiona a imagem para ocupar todo o espaço disponível */
+        }
+
+        /* Estilos PRODUTO */
+        .main-container{
+            width: 90%;
+            margin:auto;
+            min-height: 100px;
+        }
+        .main-produtos {
+            margin-top: 50px;
+            
+        }
+   
+        .hr {
+            margin-top: 3em;
+        }
+        container-produtos{
+            background-color: #d6700f;
+            height: 100vh;
+            display: grid;
+            place-items: center center;
+            font-family: 'Poppins',sans-serif;
+        }
+        .cards{
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(400px,1fr));
+            padding: 20px;
+            grid-gap: 40px;
+        }
+        .card{
+            position: relative;
+            background: 
+            linear-gradient(
+                
+                    135deg,
+                    #a04c0069,
+                    #e3670b00
+                ),
+                url(Imagens/home/Produtos/fundoCobre.avif);
+            border-radius: 20px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.18);
+        }
+        .cards .container{
+            border-radius: 0px 0px 20px 20px;
+            position: relative;
+        }
+        .card .container img{
+            width: 100%;
+            display: block;
+        
+        }
+        .cards .container:after{
+            content: "";
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0.7;
+        }   
+        .cards .container{
+            background-image: linear-gradient(
+                135deg,
+                #000000ed,
+                #492916d4
+            );
+        }
+        .header-card-produto{
+            padding: 20px 10px;
+        }
+        .header-card-produto>h2{
+            color: #fefefee8;
+            margin: 10px 0 15px 0;
+            text-align: center;
+        }
+        .header-card-produto>p{
+            color: #a0a0a0;
+            line-height: 30px;
+            font-weight: 400;
+        }
+
+        /*fim estido cards*/
+
+        .localizacao-container{
+            width: 100%;
+            margin-top: 30px;
+            background:
+                linear-gradient(
+                rgba(39, 37, 37, 0.681),rgba(56, 48, 48, 0.255)
+                ),
+                url(Imagens/home/Localizacao/Perini-Business-Park-1.jpg);
+            background-attachment: fixed;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size:cover;
+        }
+
+        .localizacao .row {
+            width: 90%;
+            margin: auto;
+            padding: 40px 0 80px 0;
+        }
+
+        .localizacao .icon-blue {
+            font-size: 24px;
+            color: #007bff;
+            margin-right: 10px;
+        }
+                
+                /* Aumentar o tamanho e espaçamento do texto */
+        .localizacao .text-large {
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        .localizacao .col-md-6 {
+            margin: auto;
+        }
+
+        .localizacao .lista-Principal {
+            width: 95%;
+            color: white;
+            background-color: #000000BA;
+            padding: revert;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin: auto;
+        }
+
+        .localizacao .lista-Principal li {
+            margin-bottom: 15px;
+        }
+
+        footer{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 200px;
+            background-image: linear-gradient(
+                283deg, #723a05b3, #462304
+            );
+        }
+
+</style>
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <div class="header-logo">
+            <!-- Inserir a imagem do logo aqui -->
+            <img src="Imagens/logo-principal.jpg">
+        </div>
+        <div class="header-menu">
+            <nav class="menu">
+                <ul>
+                    <li><a href="#home">HOME</a></li>
+                    <li><a href="#sobre">SOBRE</a></li>
+                    <li><a href="#produtos">PRODUTOS</a></li>
+                    <li><a href="#contato">CONTATO</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header-search">
+            <div class="search-box">
+                <input class="form-control" type="search" placeholder="Buscar" aria-label="Search">
+                <button type="submit" class="btn btn-outline-light">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contêiner do Carrossel -->
+    <div class="carousel-container">
+        <!-- Carrossel de Imagens -->
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="Imagens/home/header1-carrossel.png" class="d-block w-100 carousel-img" alt="Imagem 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="Imagens/home/header2-carrossel.png" class="d-block w-100 carousel-img" alt="Imagem 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="Imagens/home/header3-carrossel.png" class="d-block w-100 carousel-img" alt="Imagem 3">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Anterior</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Próximo</span>
+            </a>
+        </div>
+    </div>
+    <div class="main-container" style="margin-top: 40px;">
+    <hr class="hr" />
+
+        <section class="main-produtos">
+                <div class="main-produtos-header" style="margin-left: 30px;">
+                    <h1>PRODUTOS</h1>
+                </div>
+
+                <div class="container-produtos">
+                    <div class="cards">
+                        <div class="card card1">    
+                            <div class="header-card-produto">
+                                <h2>Fios de Cobre Nu - Trefilado</h2>
+                            </div>
+                            <div class="additional-info" style="width: 85%; text-align:justify; margin: auto; display: none;">
+                                <p>
+                                    Com diâmetros de 1,45 – 1,51 – 1,83 e 2,05 mm, sendo os fios mais finos ideais para projetos de baixa potência e os mais grossos recomendados para projetos de maior potência.
+                                </p>
+                            </div>
+                            <div class="container">
+                                <img src="Imagens/home/Produtos/fio_cobre_nu_nova-1.png" alt="Fio Trefilado">
+                            </div>
+                        </div>
+                        <div class="card card2">
+                            <div class="header-card-produto">
+                                <h2>Vergalhão</h2>
+                            </div>
+                            <div class="container">
+                                <img src="Imagens/home/Produtos/vergalhao-1.png" alt="Vergalhão">
+                            </div>
+                        </div>
+                        <div class="card card3">
+                            <div class="header-card-produto">
+                                <h2>Catodo</h2>
+                            </div>
+                            <div class="container">
+                                <img src="Imagens/home/Produtos/catodo_im.png" alt="Catodo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mais-produtos" style="text-align: center;">
+                    <button class="btn btn-primary"> Mais Produtos</button>
+                </div>
+
+        </section>
+
+        <hr class="hr" />
+    </div>
+    <section class="localizacao" style="margin-top: 50px;">
+        <div class="main-localizacao-header" style="width: 90%; margin: auto;">
+            <h1 style="margin-left: 30px";>Localização</h1>
+        </div>
+        <div class="localizacao-container">
+            <div class="row">
+                <div class="col-md-6">
+                    <ul class="lista-Principal">
+                        <li><i class="fa fa-map-marker icon-blue"></i><span class="text-large">Rua Dona Francisca, 8300 - Distrito Industrial - 89219-600 - Park Perini</span></li>
+                        <li><i class="fa fa-map-marker icon-blue"></i><span class="text-large">Unidades:</span></li>
+                        <ul>
+                            <li><i class="fa fa-industry icon-blue"></i><span class="text-large">Copper Matriz: Bloco A - Módulos: 6 e 7</span></li>
+                            <li><i class="fa fa-industry icon-blue"></i><span class="text-large">Copper Filial: Bloco F - Módulos: 9 e 10</span></li>
+                        </ul>
+                        <li><i class="fa fa-phone icon-blue"></i><span class="text-large">47 3305-5000</span></li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3594.5942361008657!2d-48.87736378509665!3d-26.339847983409633!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94d8c40c8a871e5b%3A0x46a35bb285816a56!2sRua%20Dona%20Francisca%2C%208300%20-%20Distrito%20Industrial%2C%20Joinville%20-%20SC%2C%2089219-600%2C%20Brasil!5e0!3m2!1spt-BR!2sus!4v1626722442517!5m2!1spt-BR!2sus" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr class="hr">
+    
+    <footer>
+        <img src="Imagens/home/logo-footer-branco2.png">
+        <h4>&copy; Copyrigth 2023</h4>
+
+    </footer>
+
+</body>
+</html>
+<script>
+    $(document).ready(function () {
+    
+    $(window).scroll(function () {
+        var scroll = $(window).scrollTop();
+        if (scroll > 140) {
+            $('header').addClass('header-scroll');
+        } else {
+            $('header').removeClass('header-scroll');
+        }
+        });
+    
+    });
+</script>
